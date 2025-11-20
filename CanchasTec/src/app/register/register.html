@@ -40,12 +40,12 @@
             <i class="fas fa-user-plus auth-page-icon"></i>
             <h2 class="auth-page-title">Crear Cuenta</h2>
             <p class="auth-page-subtitle">Únete a la comunidad CanchaTec</p>
-            
+
             <!-- Alert de error -->
             <div class="alert alert-danger mt-3" role="alert" *ngIf="errorMessage">
               <i class="fas fa-exclamation-circle me-2"></i>{{ errorMessage }}
             </div>
-            
+
             <!-- Alert de éxito -->
             <div class="alert alert-success mt-3" role="alert" *ngIf="successMessage">
               <i class="fas fa-check-circle me-2"></i>{{ successMessage }}
@@ -117,12 +117,13 @@
               <label for="userType" class="form-label">
                 <i class="fas fa-id-badge me-2"></i>Tipo de Usuario
               </label>
-              <select 
-                class="form-control auth-input" 
-                id="userType" 
+              <select
+                class="form-control auth-input"
+                id="userType"
                 [(ngModel)]="userType"
                 name="userType"
-                required>
+                required
+              >
                 <option value="">Seleccionar tipo</option>
                 <option value="usuario">Usuario Regular</option>
                 <option value="administrador">Administrador</option>
@@ -145,9 +146,7 @@
 
             <div class="d-grid mb-4">
               <button type="submit" class="btn btn-gold btn-auth" [disabled]="isLoading">
-                <span *ngIf="!isLoading">
-                  <i class="fas fa-user-plus me-2"></i>Crear Cuenta
-                </span>
+                <span *ngIf="!isLoading"> <i class="fas fa-user-plus me-2"></i>Crear Cuenta </span>
                 <span *ngIf="isLoading">
                   <i class="fas fa-spinner fa-spin me-2"></i>Registrando...
                 </span>

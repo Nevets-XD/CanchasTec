@@ -19,7 +19,7 @@ interface RegisterResponse {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private apiUrl = 'http://localhost:5000/api';
@@ -39,25 +39,33 @@ export class AuthService {
   }
 
   login(email: string, password: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/Login`, {
-      email,
-      password
-    }).pipe(
-      tap(response => {
-        if (response.user) {
-          localStorage.setItem('currentUser', JSON.stringify(response.user));
-          this.currentUserSubject.next(response.user);
-        }
+    return this.http
+      .post<LoginResponse>(`${this.apiUrl}/Login`, {
+        email,
+        password,
       })
-    );
+      .pipe(
+        tap((response) => {
+          if (response.user) {
+            localStorage.setItem('currentUser', JSON.stringify(response.user));
+            this.currentUserSubject.next(response.user);
+            console.log('💾 Usuario guardado en localStorage:', response.user);
+          }
+        })
+      );
   }
 
-  register(nombre: string, email: string, password: string, tipo_usuario: string): Observable<RegisterResponse> {
+  register(
+    nombre: string,
+    email: string,
+    password: string,
+    tipo_usuario: string
+  ): Observable<RegisterResponse> {
     return this.http.post<RegisterResponse>(`${this.apiUrl}/Register`, {
       nombre,
       email,
       password,
-      tipo_usuario
+      tipo_usuario,
     });
   }
 
@@ -68,5 +76,15 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     return !!this.currentUserValue;
+  }
+
+  isAdmin(): boolean {
+    const user = this.currentUserValue;
+    return user && user.tipo_usuario.toLowerCase() === 'administrador';
+  }
+
+  isUsuario(): boolean {
+    const user = this.currentUserValue;
+    return user && user.tipo_usuario.toLowerCase() === 'usuario';
   }
 }

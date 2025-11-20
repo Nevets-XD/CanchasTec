@@ -1,0 +1,112 @@
+.client-container {
+    min-height: 100vh;
+    padding-top: 80px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
+
+.client-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.client-header h1 {
+    color: var(--primary-gold);
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.client-header p {
+    color: var(--text-light);
+    font-size: 1.2rem;
+}
+
+.client-card {
+    background: var(--card-bg);
+    border: 2px solid #444;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.client-card:hover {
+    border-color: var(--primary-gold);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+}
+
+.client-card i {
+    font-size: 3rem;
+    color: var(--primary-gold);
+    margin-bottom: 20px;
+}
+
+.client-card h3 {
+    color: var(--primary-gold);
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.client-card p {
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.info-card {
+    background: var(--card-bg);
+    border: 2px solid #444;
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.info-card h4 {
+    color: var(--primary-gold);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.info-list {
+    list-style: none;
+    padding: 0;
+}
+
+.info-list li {
+    color: var(--text-light);
+    padding: 10px 0;
+    border-bottom: 1px solid #444;
+}
+
+.info-list li:last-child {
+    border-bottom: none;
+}
+
+.btn-gold {
+    background: linear-gradient(45deg, var(--primary-gold), var(--accent-gold));
+    border: none;
+    color: #1a1a1a;
+    font-weight: bold;
+    padding: 10px 25px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+.btn-outline-gold {
+    border: 2px solid var(--primary-gold);
+    color: var(--primary-gold);
+    background: transparent;
+    font-weight: bold;
+    padding: 12px 30px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-gold:hover {
+    background: var(--primary-gold);
+    color: #1a1a1a;
+}

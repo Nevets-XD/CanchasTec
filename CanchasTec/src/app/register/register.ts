@@ -61,7 +61,7 @@ export class RegisterComponent {
         this.successMessage = '¡Cuenta creada exitosamente! Redirigiendo al login...';
         
         setTimeout(() => {
-          this.router.navigate(['/login']);
+          this.router.navigate(['/Login']);
         }, 2000);
       },
       error: (error) => {
