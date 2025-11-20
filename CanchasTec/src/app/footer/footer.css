@@ -1,0 +1,121 @@
+.footer {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+    color: var(--text-light);
+    padding: 60px 0 30px;
+    margin-top: 80px;
+    border-top: 3px solid var(--primary-gold);
+}
+
+.footer-title {
+    color: var(--primary-gold);
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+}
+
+.footer-text {
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: var(--primary-gold);
+    padding-left: 5px;
+}
+
+.footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-contact li {
+    color: #ccc;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+.footer-contact i {
+    color: var(--primary-gold);
+    width: 20px;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #2d2d2d;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid #444;
+}
+
+.social-link:hover {
+    background: var(--primary-gold);
+    color: #1a1a1a;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.footer-divider {
+    border-color: #444;
+    margin: 40px 0 30px;
+    opacity: 0.5;
+}
+
+.footer-copyright {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.text-danger {
+    color: #ff6b6b !important;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .footer {
+        padding: 40px 0 20px;
+        margin-top: 50px;
+    }
+
+    .footer-title {
+        font-size: 1.1rem;
+    }
+
+    .footer-text,
+    .footer-contact li {
+        font-size: 0.9rem;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}

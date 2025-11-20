@@ -1,0 +1,28 @@
+/* Importar Bootstrap */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+/* Variables CSS */
+:root {
+    --primary-gold: #FFD700;
+    --accent-gold: #FFA500;
+    --dark-bg: #1a1a1a;
+    --card-bg: #2d2d2d;
+    --text-light: #f8f9fa;
+}
+
+/* Base */
+body {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: var(--text-light);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
+
