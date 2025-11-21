@@ -43,10 +43,10 @@ export class AdminComponent implements OnInit {
       next: (response) => {
         this.todasReservas = response.reservas;
         this.isLoading = false;
-        console.log('✅ Reservas cargadas:', this.todasReservas);
+        console.log('Reservas cargadas:', this.todasReservas);
       },
       error: (error) => {
-        console.error('❌ Error al cargar reservas:', error);
+        console.error('Error al cargar reservas:', error);
         this.isLoading = false;
       },
     });
@@ -59,12 +59,12 @@ export class AdminComponent implements OnInit {
 
     this.reservasService.actualizarEstadoReserva(reservaId, 'aprobada').subscribe({
       next: (response) => {
-        console.log('✅ Reserva aprobada:', response);
+        console.log('Reserva aprobada:', response);
         alert('Reserva aprobada exitosamente');
         this.cargarTodasReservas();
       },
       error: (error) => {
-        console.error('❌ Error al aprobar reserva:', error);
+        console.error('Error al aprobar reserva:', error);
         alert('Error al aprobar la reserva');
       },
     });
@@ -77,12 +77,12 @@ export class AdminComponent implements OnInit {
 
     this.reservasService.actualizarEstadoReserva(reservaId, 'rechazada').subscribe({
       next: (response) => {
-        console.log('✅ Reserva rechazada:', response);
+        console.log('Reserva rechazada:', response);
         alert('Reserva rechazada');
         this.cargarTodasReservas();
       },
       error: (error) => {
-        console.error('❌ Error al rechazar reserva:', error);
+        console.error('Error al rechazar reserva:', error);
         alert('Error al rechazar la reserva');
       },
     });

@@ -172,7 +172,7 @@ def login():
         }), 200
         
     except Exception as e:
-        print(f"❌ Error en login: {str(e)}")
+        print(f"Error en login: {str(e)}")
         return jsonify({'message': f'Error en el servidor: {str(e)}'}), 500
 
 # ==================== RUTAS DE CANCHAS ====================
@@ -197,7 +197,7 @@ def get_canchas():
         return jsonify({'canchas': canchas_list}), 200
         
     except Exception as e:
-        print(f"❌ Error al obtener canchas: {str(e)}")
+        print(f"Error al obtener canchas: {str(e)}")
         return jsonify({'message': f'Error en el servidor: {str(e)}'}), 500
 
 # ==================== RUTAS DE RESERVAS ====================
@@ -252,7 +252,7 @@ def crear_reserva():
         reserva_id = cursor.lastrowid
         conn.close()
         
-        print(f"✅ Reserva creada: ID {reserva_id}")
+        print(f"Reserva creada: ID {reserva_id}")
         
         return jsonify({
             'message': 'Reserva creada exitosamente',
@@ -260,7 +260,7 @@ def crear_reserva():
         }), 201
         
     except Exception as e:
-        print(f"❌ Error al crear reserva: {str(e)}")
+        print(f"Error al crear reserva: {str(e)}")
         return jsonify({'message': f'Error en el servidor: {str(e)}'}), 500
 
 @app.route('/api/reservas/usuario/<int:usuario_id>', methods=['GET'])
@@ -328,7 +328,7 @@ def get_todas_reservas():
         return jsonify({'reservas': reservas_list}), 200
         
     except Exception as e:
-        print(f"❌ Error al obtener reservas: {str(e)}")
+        print(f"Error al obtener reservas: {str(e)}")
         return jsonify({'message': f'Error en el servidor: {str(e)}'}), 500
 
 @app.route('/api/reservas/<int:reserva_id>/estado', methods=['PUT'])
@@ -362,7 +362,7 @@ def actualizar_estado_reserva(reserva_id):
         return jsonify({'message': 'Estado actualizado exitosamente'}), 200
         
     except Exception as e:
-        print(f"❌ Error al actualizar reserva: {str(e)}")
+        print(f"Error al actualizar reserva: {str(e)}")
         return jsonify({'message': f'Error en el servidor: {str(e)}'}), 500
 
 # ==================== INICIAR SERVIDOR ====================

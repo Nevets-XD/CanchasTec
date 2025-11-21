@@ -50,10 +50,10 @@ export class ClientComponent implements OnInit {
     this.reservasService.getCanchas().subscribe({
       next: (response) => {
         this.canchas = response.canchas;
-        console.log('✅ Canchas cargadas:', this.canchas);
+        console.log('Canchas cargadas:', this.canchas);
       },
       error: (error) => {
-        console.error('❌ Error al cargar canchas:', error);
+        console.error('Error al cargar canchas:', error);
       }
     });
   }
@@ -62,10 +62,10 @@ export class ClientComponent implements OnInit {
     this.reservasService.getReservasUsuario(this.currentUser.id).subscribe({
       next: (response) => {
         this.misReservas = response.reservas;
-        console.log('✅ Reservas cargadas:', this.misReservas);
+        console.log('Reservas cargadas:', this.misReservas);
       },
       error: (error) => {
-        console.error('❌ Error al cargar reservas:', error);
+        console.error('Error al cargar reservas:', error);
       }
     });
   }
@@ -117,7 +117,7 @@ export class ClientComponent implements OnInit {
 
     this.reservasService.crearReserva(reserva).subscribe({
       next: (response) => {
-        console.log('✅ Reserva creada:', response);
+        console.log('Reserva creada:', response);
         this.mensajeExito = '¡Reserva creada exitosamente! Está pendiente de aprobación.';
         this.isLoading = false;
         this.limpiarFormulario();
@@ -128,7 +128,7 @@ export class ClientComponent implements OnInit {
         }, 2000);
       },
       error: (error) => {
-        console.error('❌ Error al crear reserva:', error);
+        console.error('Error al crear reserva:', error);
         this.isLoading = false;
         this.mensajeError = error.error?.message || 'Error al crear la reserva';
       }
