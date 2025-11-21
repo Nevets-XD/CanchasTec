@@ -1,0 +1,114 @@
+<div class="client-container">
+  <div class="client-header">
+    <h1><i class="fas fa-user-circle me-2"></i>Panel de Usuario</h1>
+    <p>Bienvenido, {{ currentUser?.nombre }}</p>
+  </div>
+
+  <div class="container mt-5">
+    <!-- Botón para nueva reserva -->
+    <div class="text-center mb-4">
+      <button class="btn btn-gold btn-lg" (click)="mostrarFormulario()" *ngIf="!mostrarFormReserva">
+        <i class="fas fa-plus-circle me-2"></i>Nueva Reserva
+      </button>
+    </div>
+
+    <!-- Formulario de nueva reserva -->
+    <div class="row" *ngIf="mostrarFormReserva">
+      <div class="col-md-8 mx-auto mb-4">
+        <div class="reserva-form">
+          <h3><i class="fas fa-calendar-plus me-2"></i>Nueva Reserva</h3>
+          
+          <!-- Alertas -->
+          <div class="alert alert-danger" *ngIf="mensajeError">
+            <i class="fas fa-exclamation-circle me-2"></i>{{ mensajeError }}
+          </div>
+          <div class="alert alert-success" *ngIf="mensajeExito">
+            <i class="fas fa-check-circle me-2"></i>{{ mensajeExito }}
+          </div>
+
+          <form (ngSubmit)="crearReserva()">
+            <div class="mb-3">
+              <label class="form-label">Cancha</label>
+              <select class="form-control" [(ngModel)]="canchaSeleccionada" name="cancha" required>
+                <option value="0">Selecciona una cancha</option>
+                <option *ngFor="let cancha of canchas" [value]="cancha.id">
+                  {{ cancha.nombre }} - {{ cancha.capacidad }} - ${{ cancha.precio_hora }}/hora
+                </option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Fecha</label>
+              <input type="date" class="form-control" [(ngModel)]="fecha" name="fecha" required>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Hora Inicio</label>
+                <input type="time" class="form-control" [(ngModel)]="horaInicio" name="horaInicio" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Hora Fin</label>
+                <input type="time" class="form-control" [(ngModel)]="horaFin" name="horaFin" required>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <button type="submit" class="btn btn-gold me-2" [disabled]="isLoading">
+                <span *ngIf="!isLoading">
+                  <i class="fas fa-check me-2"></i>Crear Reserva
+                </span>
+                <span *ngIf="isLoading">
+                  <i class="fas fa-spinner fa-spin me-2"></i>Creando...
+                </span>
+              </button>
+              <button type="button" class="btn btn-secondary" (click)="ocultarFormulario()">
+                <i class="fas fa-times me-2"></i>Cancelar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mis Reservas -->
+    <div class="row mt-5">
+      <div class="col-12">
+        <h3 class="mb-4"><i class="fas fa-calendar-check me-2"></i>Mis Reservas</h3>
+        
+        <div class="table-responsive" *ngIf="misReservas.length > 0">
+          <table class="table reservas-table">
+            <thead>
+              <tr>
+                <th>Cancha</th>
+                <th>Fecha</th>
+                <th>Hora Inicio</th>
+                <th>Hora Fin</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let reserva of misReservas">
+                <td>{{ reserva.cancha_nombre }}</td>
+                <td>{{ reserva.fecha }}</td>
+                <td>{{ reserva.hora_inicio }}</td>
+                <td>{{ reserva.hora_fin }}</td>
+                <td><span [class]="getEstadoClass(reserva.estado)">{{ reserva.estado }}</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="alert alert-info text-center" *ngIf="misReservas.length === 0">
+          <i class="fas fa-info-circle me-2"></i>No tienes reservas aún
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <button (click)="logout()" class="btn btn-outline-gold btn-lg">
+        <i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión
+      </button>
+    </div>
+  </div>
+</div>

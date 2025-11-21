@@ -12,11 +12,11 @@
       <div class="col-md-4 mb-4 mb-md-0">
         <h5 class="footer-title">Enlaces Rápidos</h5>
         <ul class="footer-links">
-          <li><a routerLink="/" fragment="inicio">Inicio</a></li>
-          <li><a routerLink="/" fragment="funciones">Servicios</a></li>
-          <li><a routerLink="/" fragment="canchas">Canchas</a></li>
-          <li><a routerLink="/creators">Creadores</a></li>
-          <li><a routerLink="/Login">Acceso</a></li>
+          <li><a (click)="logout()" routerLink="/" fragment="inicio">Inicio</a></li>
+          <li><a (click)="logout()"  routerLink="/" fragment="funciones">Servicios</a></li>
+          <li><a (click)="logout()"  routerLink="/" fragment="canchas">Canchas</a></li>
+          <li><a (click)="logout()"  routerLink="/creators">Creadores</a></li>
+          <li><a (click)="logout()"  routerLink="/Login">Acceso</a></li>
         </ul>
       </div>
 

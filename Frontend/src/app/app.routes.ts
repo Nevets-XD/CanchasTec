@@ -12,6 +12,7 @@ export const routes: Routes = [
   { path: 'Login', component: LoginComponent },
   { path: 'Register', component: RegisterComponent },
   
+  
   // Nuevas rutas para admin y cliente
   { path: 'admin', component: AdminComponent },
   { path: 'client', component: ClientComponent },

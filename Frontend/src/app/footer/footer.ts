@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { Component,OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth';
+
+
 @Component({
-  selector: 'app-navbar',
-  standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive],
-  templateUrl: './navbar.html',
-  styleUrls: ['./navbar.css'],
+  selector: 'app-footer',
+  imports: [RouterModule],
+  templateUrl: './footer.html',
+  styleUrl: './footer.css',
 })
 export class Navbar implements OnInit {
   currentUser: any = null;
@@ -19,6 +20,5 @@ export class Navbar implements OnInit {
   }
   logout(): void {
     this.authService.logout();
-    this.router.navigate(['/login']);
   }
 }

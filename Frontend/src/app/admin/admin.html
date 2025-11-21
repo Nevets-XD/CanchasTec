@@ -1,0 +1,126 @@
+<div class="admin-container">
+  <div class="admin-header">
+    <h1><i class="fas fa-shield-alt me-2"></i>Panel de Administrador</h1>
+    <p>Bienvenido, {{ currentUser?.nombre }}</p>
+  </div>
+
+  <div class="container mt-5">
+    <!-- Cards de opciones (solo Reservas funcional) -->
+    <div class="row" *ngIf="!mostrarReservas">
+      <div class="col-md-3 mb-4">
+        <div class="admin-card">
+          <i class="fas fa-users"></i>
+          <h3>Usuarios</h3>
+          <p>Gestionar usuarios del sistema</p>
+          <button class="btn btn-gold" disabled>Próximamente</button>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <div class="admin-card active-card">
+          <i class="fas fa-calendar-alt"></i>
+          <h3>Reservas</h3>
+          <p>Gestionar reservas de canchas</p>
+          <button class="btn btn-gold" (click)="verReservas()">Ver Reservas</button>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <div class="admin-card">
+          <i class="fas fa-futbol"></i>
+          <h3>Canchas</h3>
+          <p>Administrar canchas disponibles</p>
+          <button class="btn btn-gold" disabled>Próximamente</button>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <div class="admin-card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Reportes</h3>
+          <p>Ver estadísticas y reportes</p>
+          <button class="btn btn-gold" disabled>Próximamente</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gestión de Reservas -->
+    <div *ngIf="mostrarReservas">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2><i class="fas fa-calendar-alt me-2"></i>Gestión de Reservas</h2>
+        <button class="btn btn-secondary" (click)="ocultarReservas()">
+          <i class="fas fa-arrow-left me-2"></i>Volver
+        </button>
+      </div>
+
+      <!-- Loading -->
+      <div class="text-center py-5" *ngIf="isLoading">
+        <i class="fas fa-spinner fa-spin fa-3x text-gold"></i>
+        <p class="text-light mt-3">Cargando reservas...</p>
+      </div>
+
+      <!-- Tabla de reservas -->
+      <div class="table-responsive" *ngIf="!isLoading && todasReservas.length > 0">
+        <table class="table reservas-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Usuario</th>
+              <th>Email</th>
+              <th>Cancha</th>
+              <th>Fecha</th>
+              <th>Hora Inicio</th>
+              <th>Hora Fin</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let reserva of todasReservas">
+              <td>{{ reserva.id }}</td>
+              <td>{{ reserva.usuario_nombre }}</td>
+              <td>{{ reserva.usuario_email }}</td>
+              <td>{{ reserva.cancha_nombre }}</td>
+              <td>{{ reserva.fecha }}</td>
+              <td>{{ reserva.hora_inicio }}</td>
+              <td>{{ reserva.hora_fin }}</td>
+              <td>
+                <span [class]="getEstadoClass(reserva.estado)">
+                  {{ reserva.estado }}
+                </span>
+              </td>
+              <td>
+                <button 
+                  class="btn btn-sm btn-success me-2" 
+                  (click)="aprobarReserva(reserva.id)"
+                  [disabled]="reserva.estado !== 'pendiente'"
+                  title="Aprobar">
+                  <i class="fas fa-check"></i>
+                </button>
+                <button 
+                  class="btn btn-sm btn-danger" 
+                  (click)="rechazarReserva(reserva.id)"
+                  [disabled]="reserva.estado !== 'pendiente'"
+                  title="Rechazar">
+                  <i class="fas fa-times"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Sin reservas -->
+      <div class="alert alert-info text-center" *ngIf="!isLoading && todasReservas.length === 0">
+        <i class="fas fa-info-circle me-2"></i>No hay reservas registradas
+      </div>
+    </div>
+
+    <!-- Botón de cerrar sesión -->
+    <div class="text-center mt-5" *ngIf="!mostrarReservas">
+      <button (click)="logout()" class="btn btn-outline-gold btn-lg">
+        <i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión
+      </button>
+    </div>
+  </div>
+</div>

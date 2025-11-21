@@ -15,26 +15,26 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/" fragment="inicio" routerLinkActive="active">
+          <a (click)="logout()" class="nav-link" routerLink="/" fragment="inicio" routerLinkActive="active">
             Inicio
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/" fragment="funciones" routerLinkActive="active">
+          <a (click)="logout()" class="nav-link" routerLink="/" fragment="funciones" routerLinkActive="active">
             Servicios
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/" fragment="canchas" routerLinkActive="active">
+          <a (click)="logout()" class="nav-link" routerLink="/" fragment="canchas" routerLinkActive="active">
             Canchas
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/creators">Creadores</a>
+          <a (click)="logout()" class="nav-link" routerLink="/creators">Creadores</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/Login">Acceso</a>
+          <a (click)="logout()" class="nav-link" routerLink="/Login">Acceso</a>
         </li>
       </ul>
     </div>
