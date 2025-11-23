@@ -10,7 +10,7 @@ import { AuthService } from '../services/auth';
   templateUrl: './footer.html',
   styleUrl: './footer.css',
 })
-export class Navbar implements OnInit {
+export class Footer implements OnInit {
   currentUser: any = null;
   constructor(private authService: AuthService, private router: Router) {}
   ngOnInit(): void {
